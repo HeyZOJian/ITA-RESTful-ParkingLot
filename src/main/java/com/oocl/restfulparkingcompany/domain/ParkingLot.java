@@ -8,17 +8,17 @@ public class ParkingLot {
 	private String name;
 	private int size;
 	private int remain;
-	private ParkingBoy parkingBoy;
+	private int parkingBoyId;
 
 	public ParkingLot() {
 	}
 
-	public ParkingLot(int id, String name, int size, int remain, ParkingBoy parkingBoy) {
+	public ParkingLot(int id, String name, int size, int remain, int parkingBoyId) {
 		this.id = id;
 		this.name = name;
 		this.size = size;
 		this.remain = remain;
-		this.parkingBoy = parkingBoy;
+		this.parkingBoyId = parkingBoyId;
 	}
 
 	public int getId() {
@@ -53,11 +53,11 @@ public class ParkingLot {
 		this.remain = remain;
 	}
 
-	public ParkingBoy getParkingBoy() {
-		return parkingBoy;
+	public int getParkingBoyId() {
+		return parkingBoyId;
 	}
 
-	public void setParkingBoy(ParkingBoy parkingBoy) {
-		this.parkingBoy = parkingBoy;
+	public void setParkingBoy(int parkingBoyId) {
+		this.parkingBoyId = parkingBoyId;
 	}
 }

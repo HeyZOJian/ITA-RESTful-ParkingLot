@@ -48,7 +48,9 @@ public class DB {
 	public static boolean addParkingLotInParkingBoy(int parkingBoyId, int parkingLotId){
 		try {
 			ParkingBoy parkingBoy = parkingBoyMap.get(parkingBoyId);
+			ParkingLot parkingLot = parkingLotMap.get(parkingLotId);
 			parkingBoy.getParkingLots().add(parkingLotId);
+			parkingLot.setParkingBoy(parkingBoy.getId());
 			parkingBoyMap.put(parkingBoyId, parkingBoy);
 			return true;
 		}catch (Exception e){
