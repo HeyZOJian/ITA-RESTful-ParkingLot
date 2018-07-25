@@ -59,4 +59,8 @@ public class DB {
 	public static List<ParkingBoy> getAllParkingBoys() {
 		return new LinkedList<>(parkingBoyMap.values());
 	}
+
+	public static List<ParkingLot> getAllParkingLots(){
+		return new LinkedList<>(parkingLotMap.values());
+	}
 }
