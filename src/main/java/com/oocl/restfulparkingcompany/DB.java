@@ -13,7 +13,7 @@ public class DB {
 	private static Map<String, Order> orderMap = new LinkedHashMap<>();
 	private static Map<String, Receipt> receiptMap = new LinkedHashMap<>();
 	private static Map<Integer, Car> carMap = new LinkedHashMap<>();
-	private static Map<Integer,Integer> relationshipFromCarToReceiptMap = new LinkedHashMap<>();
+	private static Map<String,Integer> relationshipFromCarToReceiptMap = new LinkedHashMap<>();
 	private static int parkingBoyIdGenerator = 1;
 	private static int parkingLotIdGenerator = 1;
 	private static int carIdGenerator = 1;
@@ -101,6 +101,11 @@ public class DB {
 	}
 
 	public static Car getCarByReceiptId(String receiptId) {
-		return null;
+		int carId = relationshipFromCarToReceiptMap.get(receiptId);
+		try {
+			return carMap.get(carId);
+		}catch (Exception e){
+			return null;
+		}
 	}
 }
