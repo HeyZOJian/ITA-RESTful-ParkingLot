@@ -16,6 +16,11 @@ public class ReceiptDao implements IReceiptDao {
 	}
 
 	@Override
+	public Receipt parkCar(Car car) {
+		return DB.parkCar(car);
+	}
+
+	@Override
 	public Car getCarByReceiptId(String receiptId) {
 		return DB.getCarByReceiptId(receiptId);
 	}

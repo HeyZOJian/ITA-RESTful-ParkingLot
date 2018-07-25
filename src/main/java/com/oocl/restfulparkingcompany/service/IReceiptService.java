@@ -5,5 +5,6 @@ import com.oocl.restfulparkingcompany.domain.Receipt;
 
 public interface IReceiptService {
     Receipt addReceipt(Receipt receipt);
+    Receipt parkCar(Car car);
     Car getCarByReceiptId(String receiptId);
 }

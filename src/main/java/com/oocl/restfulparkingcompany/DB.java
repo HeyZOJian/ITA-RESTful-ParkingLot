@@ -100,6 +100,12 @@ public class DB {
 		return receiptMap.get(receiptId);
 	}
 
+	public static Receipt parkCar(Car car){
+	    Receipt receipt = new Receipt(UUID.randomUUID().toString());
+	    relationshipFromCarToReceiptMap.put(receipt.getReceiptId(),car.getId());
+	    return receipt;
+    }
+
 	public static Car getCarByReceiptId(String receiptId) {
 		int carId = relationshipFromCarToReceiptMap.get(receiptId);
 		try {
