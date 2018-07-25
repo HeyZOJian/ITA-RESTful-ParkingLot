@@ -103,6 +103,7 @@ public class DB {
 	public static Receipt parkCar(Car car){
 	    Receipt receipt = new Receipt();
 	    addReceipt(receipt);
+        System.out.println(receipt.getReceiptId()+":"+car.getUUID());
 	    relationshipFromCarToReceiptMap.put(receipt.getReceiptId(),car.getUUID());
 	    return receipt;
     }
@@ -126,4 +127,5 @@ public class DB {
     public static Car getCarByUUID(String uuid){
 	    return carMap.get(uuid);
     }
+
 }

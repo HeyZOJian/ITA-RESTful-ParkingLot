@@ -7,4 +7,5 @@ public interface IReceiptService {
     Receipt addReceipt(Receipt receipt);
     Receipt parkCar(Car car);
     Car getCarByReceiptId(String receiptId);
+    Car unParkCar(String receiptId);
 }

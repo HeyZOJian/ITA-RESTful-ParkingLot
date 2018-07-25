@@ -30,4 +30,9 @@ public class ReceiptService implements IReceiptService{
     public Car getCarByReceiptId(String receiptId) {
         return receiptDao.getCarByReceiptId(receiptId);
     }
+
+    @Override
+    public Car unParkCar(String receiptId) {
+        return receiptDao.unParkCar(receiptId);
+    }
 }
