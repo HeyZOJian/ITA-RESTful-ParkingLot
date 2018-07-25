@@ -2,6 +2,7 @@ package com.oocl.restfulparkingcompany.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.oocl.restfulparkingcompany.domain.Car;
+import com.oocl.restfulparkingcompany.domain.Receipt;
 import com.oocl.restfulparkingcompany.service.IReceiptService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -15,6 +16,9 @@ public class ReceiptController {
 
     @PutMapping("/receipt")
     public JSONObject parking(@RequestBody Car car){
-        receiptService.
+        JSONObject res = new JSONObject();
+        Receipt receipt = receiptService.parkCar(car);
+        res.put("receipt",receipt);
+        return res;
     }
 }

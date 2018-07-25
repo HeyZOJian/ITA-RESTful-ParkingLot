@@ -12,8 +12,8 @@ public class DB {
 	private static Map<Integer, ParkingLot> parkingLotMap = new LinkedHashMap<>();
 	private static Map<String, Order> orderMap = new LinkedHashMap<>();
 	private static Map<String, Receipt> receiptMap = new LinkedHashMap<>();
-	private static Map<Integer, Car> carMap = new LinkedHashMap<>();
-	private static Map<String,Integer> relationshipFromCarToReceiptMap = new LinkedHashMap<>();
+	private static Map<String, Car> carMap = new LinkedHashMap<>();
+	private static Map<String,String> relationshipFromCarToReceiptMap = new LinkedHashMap<>();
 	private static int parkingBoyIdGenerator = 1;
 	private static int parkingLotIdGenerator = 1;
 	private static int carIdGenerator = 1;
@@ -101,17 +101,29 @@ public class DB {
 	}
 
 	public static Receipt parkCar(Car car){
-	    Receipt receipt = new Receipt(UUID.randomUUID().toString());
-	    relationshipFromCarToReceiptMap.put(receipt.getReceiptId(),car.getId());
+	    Receipt receipt = new Receipt();
+	    addReceipt(receipt);
+	    relationshipFromCarToReceiptMap.put(receipt.getReceiptId(),car.getUUID());
 	    return receipt;
     }
 
 	public static Car getCarByReceiptId(String receiptId) {
-		int carId = relationshipFromCarToReceiptMap.get(receiptId);
+		String carId = relationshipFromCarToReceiptMap.get(receiptId);
 		try {
 			return carMap.get(carId);
 		}catch (Exception e){
 			return null;
 		}
 	}
+
+	public static Car addCar(Car car){
+	    String uuid = UUID.randomUUID().toString();
+        car.setId(uuid);
+        carMap.put(uuid,car);
+        return car;
+    }
+
+    public static Car getCarByUUID(String uuid){
+	    return carMap.get(uuid);
+    }
 }

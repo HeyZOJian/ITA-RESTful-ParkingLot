@@ -1,5 +1,6 @@
 package com.oocl.restfulparkingcompany.service;
 
+import com.oocl.restfulparkingcompany.dao.ICarDao;
 import com.oocl.restfulparkingcompany.dao.IReceiptDao;
 import com.oocl.restfulparkingcompany.domain.Car;
 import com.oocl.restfulparkingcompany.domain.Receipt;
@@ -11,6 +12,9 @@ public class ReceiptService implements IReceiptService{
     @Autowired
     IReceiptDao receiptDao;
 
+    @Autowired
+    ICarDao carDao;
+
     @Override
     public Receipt addReceipt(Receipt receipt) {
         return receiptDao.addReceipt(receipt);
@@ -18,7 +22,8 @@ public class ReceiptService implements IReceiptService{
 
     @Override
     public Receipt parkCar(Car car) {
-        return receiptDao.parkCar(car);
+        Car returnCar = carDao.addCar(car);
+        return receiptDao.parkCar(returnCar);
     }
 
     @Override
