@@ -85,7 +85,7 @@ public class DB {
 	public static Order updateOrderStatus(String orderId, int parkingBoyId){
 		try {
 			Order order = orderMap.get(orderId);
-			if(order.isBeHeld()==false) {
+			if(order.isBeHeld()==false && getParkingBoyById(parkingBoyId)!=null) {
                 order.setParkingBoyID(parkingBoyId);
                 order.setBeHeld(true);
                 orderMap.put(orderId, order);
