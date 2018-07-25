@@ -14,12 +14,12 @@ public class OrderDao implements IOrderDao{
     }
 
     @Override
-    public List<Order> getAllOrder() {
-        return DB.getAllOrders();
+    public List<Order> getAllUsableOrder() {
+        return DB.getAllUsableOrder();
     }
 
     @Override
-    public boolean updateOrderUsble(String uuid, boolean usble) {
-        return DB.updateOrderUsable(uuid, usble);
+    public Order updateOrderStatus(String uuid, int parkingBoyId) {
+        return DB.updateOrderStatus(uuid, parkingBoyId);
     }
 }

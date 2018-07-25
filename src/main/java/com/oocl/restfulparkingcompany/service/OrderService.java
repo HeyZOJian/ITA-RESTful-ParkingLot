@@ -18,12 +18,12 @@ public class OrderService implements IOrderService{
     }
 
     @Override
-    public List<Order> getAllOrder() {
-        return orderDao.getAllOrder();
+    public List<Order> getAllUsableOrder() {
+        return orderDao.getAllUsableOrder();
     }
 
     @Override
-    public boolean updateOrderUsble(String uuid, boolean usble) {
-        return orderDao.updateOrderUsble(uuid, usble);
+    public Order updateOrderStatus(String uuid, int parkingBoyId) {
+        return orderDao.updateOrderStatus(uuid, parkingBoyId);
     }
 }

@@ -3,6 +3,7 @@ package com.oocl.restfulparkingcompany;
 import com.oocl.restfulparkingcompany.domain.*;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * Created by Vito Zhuang on 7/25/2018.
@@ -74,18 +75,27 @@ public class DB {
 		return order;
 	}
 
-	public static List<Order> getAllOrders(){
-		return new LinkedList<>(orderMap.values());
+	public static List<Order> getAllUsableOrder(){
+	    return new LinkedList<>(orderMap.values()
+                .stream()
+                .filter(order -> order.isBeHeld()==false)
+                .collect(Collectors.toList()));
 	}
 
-	public static boolean updateOrderUsable(String orderId, boolean usable){
+	public static Order updateOrderStatus(String orderId, int parkingBoyId){
 		try {
 			Order order = orderMap.get(orderId);
-			order.setUsable(usable);
-			orderMap.put(orderId, order);
-			return true;
+			if(order.isBeHeld()==false) {
+                order.setParkingBoyID(parkingBoyId);
+                order.setBeHeld(true);
+                orderMap.put(orderId, order);
+                return order;
+            }else{
+			    return null;
+            }
+
 		}catch (Exception e){
-			return false;
+			return null;
 		}
 	}
 

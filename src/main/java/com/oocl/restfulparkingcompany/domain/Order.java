@@ -5,15 +5,18 @@ package com.oocl.restfulparkingcompany.domain;
  */
 public class Order {
 	private String orderId;
-	private boolean usable;
+	private int parkingBoyID;
+	private boolean beHeld;
 
-	public Order() {
-		this.usable = true;
+	public Order(){
+		this.parkingBoyID = 0;
+		this.beHeld = false;
 	}
 
-	public Order(String orderId) {
+	public Order(String orderId, int parkingBoyID) {
 		this.orderId = orderId;
-		this.usable = true;
+		this.parkingBoyID = parkingBoyID;
+		this.beHeld = false;
 	}
 
 	public String getOrderId() {
@@ -24,11 +27,19 @@ public class Order {
 		this.orderId = orderId;
 	}
 
-	public boolean isUsable() {
-		return usable;
+	public int getParkingBoyID() {
+		return parkingBoyID;
 	}
 
-	public void setUsable(boolean usable) {
-		this.usable = usable;
+	public void setParkingBoyID(int parkingBoyID) {
+		this.parkingBoyID = parkingBoyID;
+	}
+
+	public boolean isBeHeld() {
+		return beHeld;
+	}
+
+	public void setBeHeld(boolean beHeld) {
+		this.beHeld = beHeld;
 	}
 }
