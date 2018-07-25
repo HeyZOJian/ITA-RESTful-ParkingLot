@@ -1,11 +1,14 @@
 package com.oocl.restfulparkingcompany.service;
 
+import com.oocl.restfulparkingcompany.DB;
 import com.oocl.restfulparkingcompany.dao.IParkingBoyDao;
 import com.oocl.restfulparkingcompany.domain.ParkingBoy;
+import com.oocl.restfulparkingcompany.domain.ParkingLot;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Created by Vito Zhuang on 7/25/2018.
