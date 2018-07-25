@@ -1,0 +1,41 @@
+package com.oocl.restfulparkingcompany.controller;
+
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+import com.fasterxml.jackson.annotation.JsonAlias;
+import com.oocl.restfulparkingcompany.domain.ParkingBoy;
+import com.oocl.restfulparkingcompany.service.IParkingBoyService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+/**
+ * Created by Vito Zhuang on 7/25/2018.
+ */
+@RestController
+public class ParkingBoyController {
+
+	@Autowired
+	IParkingBoyService parkingBoyService;
+
+	@PostMapping("/parkingBoys")
+	public JSONObject addParkingBoy(@RequestBody ParkingBoy parkingBoy){
+		JSONObject res = new JSONObject();
+		if(parkingBoyService.addParkingBoy(parkingBoy))
+			res.put("message","add parkingBoy successfully");
+		else
+			res.put("message","add parkingBoy failed");
+		return res;
+	}
+
+//	@GetMapping("/parkingBoys/{parkingBoyId}")
+//	public ParkingBoy getParkingBoyById(@PathVariable int parkingBoyId){
+//		return parkingBoyService.getParkingBoyById(parkingBoyId);
+//	}
+
+//	@PutMapping("/parkingBoys/{parkingBoyId}")
+//	public JSONObject addParkingLotInParkingBoy(@PathVariable int parkingBoyId
+//			,@RequestBody JSONObject request){
+//
+//	}
+
+}

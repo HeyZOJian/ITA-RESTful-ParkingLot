@@ -17,6 +17,7 @@ public class DB {
 
 	public static boolean addParkingBoy(ParkingBoy parkingBoy){
 		try {
+			parkingBoy.setId(parkingBoyIdGenerator);
 			parkingBoyMap.put(parkingBoyIdGenerator++, parkingBoy);
 			return true;
 		}catch (Exception e){
@@ -26,6 +27,7 @@ public class DB {
 
 	public static boolean addParkingLot(ParkingLot parkingLot){
 		try {
+			parkingLot.setId(parkingLotIdGenerator);
 			parkingLotMap.put(parkingLotIdGenerator++, parkingLot);
 			return true;
 		}catch (Exception e){
