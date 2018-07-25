@@ -4,23 +4,23 @@ package com.oocl.restfulparkingcompany.domain;
  * Created by Vito Zhuang on 7/25/2018.
  */
 public class Order {
-	private int orderId;
+	private String orderId;
 	private boolean usable;
 
 	public Order() {
 		this.usable = true;
 	}
 
-	public Order(int orderId) {
+	public Order(String orderId) {
 		this.orderId = orderId;
 		this.usable = true;
 	}
 
-	public int getOrderId() {
+	public String getOrderId() {
 		return orderId;
 	}
 
-	public void setOrderId(int orderId) {
+	public void setOrderId(String orderId) {
 		this.orderId = orderId;
 	}
 

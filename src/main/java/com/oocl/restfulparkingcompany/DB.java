@@ -2,10 +2,7 @@ package com.oocl.restfulparkingcompany;
 
 import com.oocl.restfulparkingcompany.domain.*;
 
-import java.util.LinkedHashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by Vito Zhuang on 7/25/2018.
@@ -13,14 +10,12 @@ import java.util.Map;
 public class DB {
 	private static Map<Integer, ParkingBoy> parkingBoyMap = new LinkedHashMap<>();
 	private static Map<Integer, ParkingLot> parkingLotMap = new LinkedHashMap<>();
-	private static Map<Integer, Order> orderMap = new LinkedHashMap<>();
-	private static Map<Integer, Receipt> receiptMap = new LinkedHashMap<>();
+	private static Map<String, Order> orderMap = new LinkedHashMap<>();
+	private static Map<String, Receipt> receiptMap = new LinkedHashMap<>();
 	private static Map<Integer, Car> carMap = new LinkedHashMap<>();
 	private static Map<Integer,Integer> relationshipFromCarToReceiptMap = new LinkedHashMap<>();
 	private static int parkingBoyIdGenerator = 1;
 	private static int parkingLotIdGenerator = 1;
-	private static int orderIdGenerator = 1;
-	private static int receiptIdGenerator = 1;
 	private static int carIdGenerator = 1;
 
 	public static ParkingBoy addParkingBoy(ParkingBoy parkingBoy){
@@ -73,20 +68,17 @@ public class DB {
 	}
 
 	public static Order addOrder(Order order){
-		try{
-			order.setOrderId(orderIdGenerator);
-			orderMap.put(orderIdGenerator++, order);
-			return order;
-		}catch (Exception e){
-			return null;
-		}
+		String uuid = UUID.randomUUID().toString();
+		order.setOrderId(uuid);
+		orderMap.put(uuid, order);
+		return order;
 	}
 
-	public List<Order> getAllOrders(){
+	public static List<Order> getAllOrders(){
 		return new LinkedList<>(orderMap.values());
 	}
 
-	public boolean updateOrderUsable(int orderId, boolean usable){
+	public static boolean updateOrderUsable(String orderId, boolean usable){
 		try {
 			Order order = orderMap.get(orderId);
 			order.setUsable(usable);
@@ -95,5 +87,20 @@ public class DB {
 		}catch (Exception e){
 			return false;
 		}
+	}
+
+	public static Receipt addReceipt(Receipt receipt){
+		String uuid = UUID.randomUUID().toString();
+		receipt.setReceiptId(uuid);
+		receiptMap.put(uuid, receipt);
+		return receipt;
+	}
+
+	public static Receipt getReceiptById(String receiptId){
+		return receiptMap.get(receiptId);
+	}
+
+	public static Car getCarByReceiptId(String receiptId) {
+		return null;
 	}
 }
