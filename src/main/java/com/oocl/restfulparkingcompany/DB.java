@@ -1,7 +1,6 @@
 package com.oocl.restfulparkingcompany;
 
-import com.oocl.restfulparkingcompany.domain.ParkingBoy;
-import com.oocl.restfulparkingcompany.domain.ParkingLot;
+import com.oocl.restfulparkingcompany.domain.*;
 
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
@@ -14,8 +13,15 @@ import java.util.Map;
 public class DB {
 	private static Map<Integer, ParkingBoy> parkingBoyMap = new LinkedHashMap<>();
 	private static Map<Integer, ParkingLot> parkingLotMap = new LinkedHashMap<>();
+	private static Map<Integer, Order> orderMap = new LinkedHashMap<>();
+	private static Map<Integer, Receipt> receiptMap = new LinkedHashMap<>();
+	private static Map<Integer, Car> carMap = new LinkedHashMap<>();
+	private static Map<Integer,Integer> relationshipFromCarToReceiptMap = new LinkedHashMap<>();
 	private static int parkingBoyIdGenerator = 1;
 	private static int parkingLotIdGenerator = 1;
+	private static int orderIdGenerator = 1;
+	private static int receiptIdGenerator = 1;
+	private static int carIdGenerator = 1;
 
 	public static ParkingBoy addParkingBoy(ParkingBoy parkingBoy){
 		try {
@@ -64,5 +70,30 @@ public class DB {
 
 	public static List<ParkingLot> getAllParkingLots(){
 		return new LinkedList<>(parkingLotMap.values());
+	}
+
+	public static Order addOrder(Order order){
+		try{
+			order.setOrderId(orderIdGenerator);
+			orderMap.put(orderIdGenerator++, order);
+			return order;
+		}catch (Exception e){
+			return null;
+		}
+	}
+
+	public List<Order> getAllOrders(){
+		return new LinkedList<>(orderMap.values());
+	}
+
+	public boolean updateOrderUsable(int orderId, boolean usable){
+		try {
+			Order order = orderMap.get(orderId);
+			order.setUsable(usable);
+			orderMap.put(orderId, order);
+			return true;
+		}catch (Exception e){
+			return false;
+		}
 	}
 }
