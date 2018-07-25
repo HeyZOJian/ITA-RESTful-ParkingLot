@@ -51,10 +51,15 @@ public class DB {
 		try {
 			ParkingBoy parkingBoy = parkingBoyMap.get(parkingBoyId);
 			ParkingLot parkingLot = parkingLotMap.get(parkingLotId);
-			parkingBoy.getParkingLots().add(parkingLotId);
-			parkingLot.setParkingBoy(parkingBoy.getId());
-			parkingBoyMap.put(parkingBoyId, parkingBoy);
-			return true;
+			if(parkingLot!=null && parkingBoy!=null) {
+                parkingBoy.getParkingLots().add(parkingLotId);
+                parkingLot.setParkingBoy(parkingBoy.getId());
+                parkingBoyMap.put(parkingBoyId, parkingBoy);
+                return true;
+            }
+            else {
+			    return false;
+            }
 		}catch (Exception e){
 			return false;
 		}
