@@ -10,7 +10,7 @@ import java.util.List;
  */
 public interface IParkingBoyDao {
 	List<ParkingBoy> getAllParkingBoys();
-	boolean addParkingBoy(ParkingBoy parkingBoy);
+	ParkingBoy addParkingBoy(ParkingBoy parkingBoy);
 	ParkingBoy getParkingBoyById(int id);
 	boolean addParkingLotInParkingBoy(int parkingBoyId, int parkingLotId);
 }

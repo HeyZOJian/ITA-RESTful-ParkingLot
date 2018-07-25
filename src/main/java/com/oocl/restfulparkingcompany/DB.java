@@ -17,23 +17,23 @@ public class DB {
 	private static int parkingBoyIdGenerator = 1;
 	private static int parkingLotIdGenerator = 1;
 
-	public static boolean addParkingBoy(ParkingBoy parkingBoy){
+	public static ParkingBoy addParkingBoy(ParkingBoy parkingBoy){
 		try {
 			parkingBoy.setId(parkingBoyIdGenerator);
 			parkingBoyMap.put(parkingBoyIdGenerator++, parkingBoy);
-			return true;
+			return parkingBoy;
 		}catch (Exception e){
-			return false;
+			return null;
 		}
 	}
 
-	public static boolean addParkingLot(ParkingLot parkingLot){
+	public static ParkingLot addParkingLot(ParkingLot parkingLot){
 		try {
 			parkingLot.setId(parkingLotIdGenerator);
 			parkingLotMap.put(parkingLotIdGenerator++, parkingLot);
-			return true;
+			return parkingLot;
 		}catch (Exception e){
-			return false;
+			return null;
 		}
 	}
 

@@ -22,10 +22,14 @@ public class ParkingBoyController {
 	@PostMapping("/parkingBoys")
 	public JSONObject addParkingBoy(@RequestBody ParkingBoy parkingBoy){
 		JSONObject res = new JSONObject();
-		if(parkingBoyService.addParkingBoy(parkingBoy))
-			res.put("message","add parkingBoy successfully");
-		else
-			res.put("message","add parkingBoy failed");
+		ParkingBoy newParkingBoy = parkingBoyService.addParkingBoy(parkingBoy);
+		if(newParkingBoy!=null) {
+			res.put("message", "add parkingBoy successfully");
+			res.put("parkingBoy",newParkingBoy);
+		}
+		else {
+			res.put("message", "add parkingBoy failed");
+		}
 		return res;
 	}
 

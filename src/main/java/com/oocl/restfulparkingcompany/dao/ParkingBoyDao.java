@@ -17,7 +17,7 @@ public class ParkingBoyDao implements IParkingBoyDao {
 	}
 
 	@Override
-	public boolean addParkingBoy(ParkingBoy parkingBoy) {
+	public ParkingBoy addParkingBoy(ParkingBoy parkingBoy) {
 		return DB.addParkingBoy(parkingBoy);
 	}
 

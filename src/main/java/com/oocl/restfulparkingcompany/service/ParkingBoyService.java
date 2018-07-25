@@ -21,7 +21,7 @@ public class ParkingBoyService implements IParkingBoyService {
 	}
 
 	@Override
-	public boolean addParkingBoy(ParkingBoy parkingBoy) {
+	public ParkingBoy addParkingBoy(ParkingBoy parkingBoy) {
 		return parkingBoyDao.addParkingBoy(parkingBoy);
 	}
 
