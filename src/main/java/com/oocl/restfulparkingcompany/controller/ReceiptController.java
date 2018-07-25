@@ -11,13 +11,13 @@ public class ReceiptController {
     @Autowired
     IReceiptService receiptService;
 
-    @PutMapping("/receipt")
+    @PutMapping("/receipts")
     public Receipt parkCar(@RequestBody Car car){
         Receipt receipt = receiptService.parkCar(car);
         return receipt;
     }
 
-    @GetMapping("/receipt/{receiptId}")
+    @GetMapping("/receipts/{receiptId}")
     public Car unParkCar(@PathVariable String receiptId){
         return receiptService.unParkCar(receiptId);
     }
