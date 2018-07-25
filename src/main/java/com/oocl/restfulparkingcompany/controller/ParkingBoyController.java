@@ -43,10 +43,18 @@ public class ParkingBoyController {
 		return parkingBoyService.getParkingBoyById(parkingBoyId);
 	}
 
-//	@PutMapping("/parkingBoys/{parkingBoyId}")
-//	public JSONObject addParkingLotInParkingBoy(@PathVariable int parkingBoyId
-//			,@RequestBody JSONObject request){
-//
-//	}
+	@PutMapping("/parkingBoys/{parkingBoyId}")
+	public JSONObject addParkingLotInParkingBoy(@PathVariable int parkingBoyId
+			,@RequestBody JSONObject request){
+		JSONObject res = new JSONObject();
+		if(parkingBoyService.addParkingLotInParkingBoy(parkingBoyId,
+				(Integer) request.get("parkingLotId"))){
+			res.put("message","add parkingLot in parkingBoy successfully");
+		}
+		else{
+			res.put("message","add parkingLot in parkingBoy failed");
+		}
+		return res;
+	}
 
 }
