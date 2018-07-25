@@ -8,6 +8,8 @@ import com.oocl.restfulparkingcompany.service.IParkingBoyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 /**
  * Created by Vito Zhuang on 7/25/2018.
  */
@@ -27,10 +29,15 @@ public class ParkingBoyController {
 		return res;
 	}
 
-//	@GetMapping("/parkingBoys/{parkingBoyId}")
-//	public ParkingBoy getParkingBoyById(@PathVariable int parkingBoyId){
-//		return parkingBoyService.getParkingBoyById(parkingBoyId);
-//	}
+	@GetMapping("/parkingBoys")
+	public List<ParkingBoy> getAllParkingBoys(){
+		return parkingBoyService.getAllParkingBoys();
+	}
+
+	@GetMapping("/parkingBoys/{parkingBoyId}")
+	public ParkingBoy getParkingBoyById(@PathVariable int parkingBoyId){
+		return parkingBoyService.getParkingBoyById(parkingBoyId);
+	}
 
 //	@PutMapping("/parkingBoys/{parkingBoyId}")
 //	public JSONObject addParkingLotInParkingBoy(@PathVariable int parkingBoyId

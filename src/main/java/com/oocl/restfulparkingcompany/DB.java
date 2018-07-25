@@ -4,6 +4,8 @@ import com.oocl.restfulparkingcompany.domain.ParkingBoy;
 import com.oocl.restfulparkingcompany.domain.ParkingLot;
 
 import java.util.LinkedHashMap;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -52,5 +54,9 @@ public class DB {
 		}catch (Exception e){
 			return false;
 		}
+	}
+
+	public static List<ParkingBoy> getAllParkingBoys() {
+		return new LinkedList<>(parkingBoyMap.values());
 	}
 }

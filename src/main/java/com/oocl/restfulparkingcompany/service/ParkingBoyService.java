@@ -5,6 +5,8 @@ import com.oocl.restfulparkingcompany.domain.ParkingBoy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * Created by Vito Zhuang on 7/25/2018.
  */
@@ -12,6 +14,11 @@ import org.springframework.stereotype.Service;
 public class ParkingBoyService implements IParkingBoyService {
 	@Autowired
 	IParkingBoyDao parkingBoyDao;
+
+	@Override
+	public List<ParkingBoy> getAllParkingBoys() {
+		return parkingBoyDao.getAllParkingBoys();
+	}
 
 	@Override
 	public boolean addParkingBoy(ParkingBoy parkingBoy) {
