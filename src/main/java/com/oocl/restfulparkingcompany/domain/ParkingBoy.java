@@ -11,12 +11,12 @@ public class ParkingBoy {
 	private String name;
 	private int age;
 	private String gender;
-	private List<ParkingLot> parkingLots = new LinkedList<>();
+	private List<Integer> parkingLots = new LinkedList<>();
 
 	public ParkingBoy() {
 	}
 
-	public ParkingBoy(int id, String name, int age, String gender, List<ParkingLot> parkingLots) {
+	public ParkingBoy(int id, String name, int age, String gender, List<Integer> parkingLots) {
 		this.id = id;
 		this.name = name;
 		this.age = age;
@@ -56,11 +56,11 @@ public class ParkingBoy {
 		this.gender = gender;
 	}
 
-	public List<ParkingLot> getParkingLots() {
+	public List<Integer> getParkingLots() {
 		return parkingLots;
 	}
 
-	public void setParkingLots(List<ParkingLot> parkingLots) {
+	public void setParkingLots(List<Integer> parkingLots) {
 		this.parkingLots = parkingLots;
 	}
 }

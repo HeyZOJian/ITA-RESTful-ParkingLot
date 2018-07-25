@@ -15,12 +15,22 @@ public class DB {
 	private static int parkingBoyIdGenerator = 1;
 	private static int parkingLotIdGenerator = 1;
 
-	public static void addParkingBoy(ParkingBoy parkingBoy){
-		parkingBoyMap.put(parkingBoyIdGenerator++, parkingBoy);
+	public static boolean addParkingBoy(ParkingBoy parkingBoy){
+		try {
+			parkingBoyMap.put(parkingBoyIdGenerator++, parkingBoy);
+			return true;
+		}catch (Exception e){
+			return false;
+		}
 	}
 
-	public static void addParkingLot(ParkingLot parkingLot){
-		parkingLotMap.put(parkingLotIdGenerator++, parkingLot);
+	public static boolean addParkingLot(ParkingLot parkingLot){
+		try {
+			parkingLotMap.put(parkingLotIdGenerator++, parkingLot);
+			return true;
+		}catch (Exception e){
+			return false;
+		}
 	}
 
 	public static ParkingBoy getParkingBoyById(int id){
@@ -29,5 +39,16 @@ public class DB {
 
 	public static ParkingLot getParkingLotById(int id){
 		return parkingLotMap.get(id);
+	}
+
+	public static boolean addParkingLotInParkingBoy(int parkingBoyId, int parkingLotId){
+		try {
+			ParkingBoy parkingBoy = parkingBoyMap.get(parkingBoyId);
+			parkingBoy.getParkingLots().add(parkingLotId);
+			parkingBoyMap.put(parkingBoyId, parkingBoy);
+			return true;
+		}catch (Exception e){
+			return false;
+		}
 	}
 }
